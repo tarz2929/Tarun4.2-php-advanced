@@ -1,4 +1,9 @@
-<?php // Show our header.
+<?php
+// GLOBAL variables are stored in PHP's
+// $GLOBALS array.
+$GLOBALS['pageTitle'] = 'Home';
+
+// Show our header.
 include './templates/header.php';
 ?>
 

@@ -1,4 +1,8 @@
-<?php // Show our header.
+<?php
+// Try to avoid use of globals unless they are absolutely necessary...
+$GLOBALS['pageTitle'] = 'PHP Calculator';
+
+// Show our header.
 include './templates/header.php';
 ?>
 
