@@ -4,13 +4,20 @@ $GLOBALS['pageTitle'] = 'PHP Calculator';
 
 // Show our header.
 include './templates/header.php';
+
+// If we want to read values from a GET method submission...
+// we use the $_GET superglobal! It is an associative array.
+echo '<pre>';
+var_dump( $_GET );
+var_dump( $_POST ); // POST is handled the same way!
+echo '</pre>';
 ?>
 
 <p>
   Welcome to our Calculator page!
 </p>
 
-<form method="GET">
+<form method="GET" action="calc.php">
   <label for="num1">
     Enter first operand:
     <input
