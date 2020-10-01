@@ -13,3 +13,7 @@
 </head>
 <body>
   <h1>WebPage</h1>
+  <?php
+    // dirname( __FILE__ ) grabs the currently executing file's ABSOLUTE path (as a string.)
+    include dirname( __FILE__ ).'/navigation.php';
+  ?>
