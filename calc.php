@@ -31,6 +31,7 @@ if ( !empty( $_GET ) )
       break;
   }
 }
+var_dump( $result );
 ?>
 
 <p>
@@ -73,6 +74,13 @@ if ( !empty( $_GET ) )
   </label>
   <input type="submit" value="Calculate!">
 </form>
+
+<?php if ( $result != FALSE ) : ?>
+  <p>
+    Your result for your calculation is:
+    <?php echo $result; ?>
+  </p>
+<?php endif; ?>
 
 <?php // Show our footer.
 include './templates/footer.php';
