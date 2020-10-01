@@ -12,11 +12,12 @@ var_dump( $_GET );
 var_dump( $_POST ); // POST is handled the same way!
 echo '</pre>';
 
+// Set result to false so we can check later if it should be output.
 $result = FALSE;
-if ( !empty( $_GET ) )
-{
+if ( !empty( $_GET ) ) // Check if there are any values in our array!
+{ // We need to do a different math operation depending on submission...
   switch ( $_GET['op'] )
-  {
+  { // A case for each possible <option> in our form...
     case 'addition':
       $result = $_GET['value1'] + $_GET['value2'];
       break;
@@ -31,7 +32,9 @@ if ( !empty( $_GET ) )
       break;
   }
 }
-var_dump( $result );
+// Use var_dump, much like we did in JS with console.log.
+// It outputs the data-type and value of what you pass in!
+var_dump( $result ); // What is our result, right now!?
 ?>
 
 <p>
@@ -43,7 +46,7 @@ var_dump( $result );
     Enter first operand:
     <input
       id="num1"
-      name="value1"
+      name="value1" <?php // NAME is used as the "key" in our query parameter string key-value pairs! ?>
       type="number"
       value="">
   </label>
@@ -75,7 +78,7 @@ var_dump( $result );
   <input type="submit" value="Calculate!">
 </form>
 
-<?php if ( $result != FALSE ) : ?>
+<?php if ( $result != FALSE ) : // Only output if there is a valid result. ?>
   <p>
     Your result for your calculation is:
     <?php echo $result; ?>
