@@ -22,40 +22,40 @@ $GLOBALS['pageTitle'] = 'PHP Calculator';
 // Show our header.
 include './templates/header.php';
 
-// If we want to read values from a GET method submission...
-// we use the $_GET superglobal! It is an associative array.
+// If we want to read values from a POST method submission...
+// we use the $_POST superglobal! It is an associative array.
 echo '<pre>';
-var_dump( $_GET );
+var_dump( $_POST );
 var_dump( $_POST ); // POST is handled the same way!
 echo '</pre>';
 
 // Set result to false so we can check later if it should be output.
 $result = FALSE;
-if ( !empty( $_GET ) ) // Check if there are any values in our array!
+if ( !empty( $_POST ) ) // Check if there are any values in our array!
 { // We need to do a different math operation depending on submission...
-  switch ( $_GET['op'] )
+  switch ( $_POST['op'] )
   { // A case for each possible <option> in our form...
     case 'addition':
       $opSymbol = '+';
-      $result = $_GET['value1'] + $_GET['value2'];
+      $result = $_POST['value1'] + $_POST['value2'];
       break;
     case 'subtraction':
       $opSymbol = '-';
-      $result = $_GET['value1'] - $_GET['value2'];
+      $result = $_POST['value1'] - $_POST['value2'];
       break;
     case 'multiplication':
       $opSymbol = '&times;';
-      $result = $_GET['value1'] * $_GET['value2'];
+      $result = $_POST['value1'] * $_POST['value2'];
       break;
     case 'division':
       $opSymbol = '&divide;';
-      $result = $_GET['value1'] / $_GET['value2'];
+      $result = $_POST['value1'] / $_POST['value2'];
       break;
   }
   // Add this result to the calculator history array!
   array_push(
     $_SESSION['calcHistory'],
-    "{$_GET['value1']} {$opSymbol} {$_GET['value2']} = {$result}"
+    "{$_POST['value1']} {$opSymbol} {$_POST['value2']} = {$result}"
   );
 }
 echo '<pre>';
@@ -70,7 +70,7 @@ echo '</pre>';
   Welcome to our Calculator page!
 </p>
 
-<form method="GET" action="calc.php">
+<form method="POST" action="calc.php">
   <label for="num1">
     Enter first operand:
     <input
