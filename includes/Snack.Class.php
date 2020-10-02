@@ -61,3 +61,6 @@ var_dump( $mySnack );
 // Run a method from the object. We use the "->" arrow for this.
 $mySnack->caramelize();
 var_dump( $mySnack );
+
+// Let's try outputting our snack...
+$mySnack->output();
