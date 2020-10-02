@@ -30,6 +30,7 @@ class Snack
     $this->calories = ( (integer) $snackCalories ); // Convert $snackCalories to int. // Could instead use intval()
   }
 
+  // Example of a custom method...
   public function caramelize()
   {
     $this->calories *= 2; // Same as... $this->calories = $this->calories * 2;
@@ -40,6 +41,6 @@ class Snack
 $mySnack = new Snack( 'Oh Henry', 'chocolate', 1.895555, "200.907" );
 var_dump( $mySnack );
 
-// Run a method from the object.
+// Run a method from the object. We use the "->" arrow for this.
 $mySnack->caramelize();
 var_dump( $mySnack );
