@@ -9,6 +9,7 @@
   // An array to store instances of Snack.
   $snacks = [];
   // Let's retrieve our list of snacks from the JSON.
+  // Also look into... fopen() fread() fwrite()
   $snacksFileString = file_get_contents( './data/snacks.json' ); // Retrieves the contents of the file as a STRING.
   // If the snacks file was found and read...
   if ( $snacksFileString )
