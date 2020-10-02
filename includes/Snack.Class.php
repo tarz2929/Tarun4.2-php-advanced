@@ -55,12 +55,12 @@ class Snack
 }
 
 // Initialize a Snack object, pass arguments to __construct.
-$mySnack = new Snack( 'Oh Henry', 'chocolate', 1.895555, "200.907" );
-var_dump( $mySnack );
+// $mySnack = new Snack( 'Oh Henry', 'chocolate', 1.895555, "200.907" );
+// var_dump( $mySnack );
 
 // Run a method from the object. We use the "->" arrow for this.
-$mySnack->caramelize();
-var_dump( $mySnack );
+// $mySnack->caramelize();
+// var_dump( $mySnack );
 
 // Let's try outputting our snack...
-$mySnack->output();
+// $mySnack->output();
