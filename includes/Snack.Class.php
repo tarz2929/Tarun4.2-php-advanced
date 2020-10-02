@@ -27,9 +27,19 @@ class Snack
       '.', // Decimal separator.
       ',' // Thousands separator. 1,000.00
     );
-    $this->calories = $snackCalories;
+    $this->calories = ( (integer) $snackCalories ); // Convert $snackCalories to int. // Could instead use intval()
+  }
+
+  public function caramelize()
+  {
+    $this->calories *= 2; // Same as... $this->calories = $this->calories * 2;
   }
 }
 
-$mySnack = new Snack( 'Oh Henry', 'chocolate', 1.895555, 200 );
+// Initialize a Snack object, pass arguments to __construct.
+$mySnack = new Snack( 'Oh Henry', 'chocolate', 1.895555, "200.907" );
+var_dump( $mySnack );
+
+// Run a method from the object.
+$mySnack->caramelize();
 var_dump( $mySnack );
