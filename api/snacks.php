@@ -20,9 +20,18 @@ if ( isset( $_GET['search'] ) && !empty( $_GET['search'] ) )
   ); // Test the output...
   // echo $snacksJSONString;
   // Check if we were able to read the file.
-  if ( $snacksJSONString )
-  {
-    
+  if ( $snacksJSONString !== FALSE )
+  { // Decode this JSON string so that we can use PHP to work with the data.
+    $snacksList = json_decode( $snacksJSONString );
+    if ( $snacksList !== NULL ) // Make sure conversion was a success!
+    {
+
+    }
+    // If we were NOT able to read the JSON as PHP Array/Object.
+    else
+    {
+      echo "{\"response\":\"ERROR: Unable to convert Snacks list from JSON.\"}";
+    }
   }
   // If we were NOT able to read the file.
   else
