@@ -18,7 +18,17 @@ if ( isset( $_GET['search'] ) && !empty( $_GET['search'] ) )
   $snacksJSONString = file_get_contents(
     '../data/snacks.json'
   ); // Test the output...
-  echo $snacksJSONString;
+  // echo $snacksJSONString;
+  // Check if we were able to read the file.
+  if ( $snacksJSONString )
+  {
+    
+  }
+  // If we were NOT able to read the file.
+  else
+  {
+    echo "{\"response\":\"ERROR: Unable to retrieve Snacks list.\"}";
+  }
 }
 // If there is no search present, a default / fall-back response.
 else
