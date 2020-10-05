@@ -33,7 +33,7 @@ if ( $dailyCatFactResponse )
 <?php
 // Let's modify our request to include a QUERY PARAMETER STRING.
 $factsListResponse = file_get_contents(
-  'https://cat-fact.herokuapp.com/facts/random?amount=10&animal_type=dog'
+  "https://cat-fact.herokuapp.com/facts/random?amount={$_POST['amount']}&animal_type={$_POST['type']}"
 ); // Test the response via var_dump()
 var_dump( $factsListResponse );
 
