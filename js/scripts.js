@@ -14,11 +14,13 @@ const searchResultsList = document.getElementById( 'search-results' );
 snackSearchForm.addEventListener( 'submit', event => {
   // Stop the form from submitting the traditional way.
   event.preventDefault();
+  // Empty the snack search result list.
+  searchResultsList.innerHTML = '';
   // Attempt a fetch for results.
   fetch ( `http://localhost:80/api/snacks.php?search=${snackSearchInput.value}` )
     .then( response => response.json() )
     .then( data => {
-      console.log( data );
+      // console.log( data );
       for ( let snack of data ) {
         // Create element.
         const snackLI = document.createElement( 'LI' );
@@ -36,6 +38,8 @@ snackSearchForm.addEventListener( 'submit', event => {
         `;
         // Add the list item to the full list.
         searchResultsList.append( snackLI );
+        // Empty the search field.
+        snackSearchInput.value = '';
       }
     } )
 } );
