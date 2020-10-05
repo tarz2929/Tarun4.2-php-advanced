@@ -24,8 +24,17 @@ if ( isset( $_GET['search'] ) && !empty( $_GET['search'] ) )
   { // Decode this JSON string so that we can use PHP to work with the data.
     $snacksList = json_decode( $snacksJSONString );
     if ( $snacksList !== NULL ) // Make sure conversion was a success!
-    {
-
+    { // Now that we have a PHP array... we can deal with this request!
+      $matchingSnacks = array(); // Array for storing matches!
+      foreach ( $snacksList as $snack )
+      { // Check if there is a match in our snack name vs search.
+        if ( stristr( $snack[0], $_GET['search'] ) )
+        { // If there is, add it to our match array.
+          array_push( $matchingSnacks, $snack );
+        }
+      }
+      // Respond with the matching snacks array as a JSON string!
+      echo json_encode( $matchingSnacks );
     }
     // If we were NOT able to read the JSON as PHP Array/Object.
     else
