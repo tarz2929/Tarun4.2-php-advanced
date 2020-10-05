@@ -24,9 +24,14 @@ if ( $dailyCatFactResponse )
 <h2>Request Animal Facts</h2>
 <form action="#" method="POST">
   <label for="amount">Enter the Amount of Facts:
-  <input type="number" id="amount" name="amount"></label>
+  <input type="number" id="amount" name="amount" value="3"></label>
   <label for="animal-type">Enter the Type of Animal:
-  <input type="text" id="animal-type" name="type">
+    <select id="animal-type" name="type">
+      <option value="cat">Cat</option>
+      <option value="dog">Dog</option>
+      <option value="horse">Horse</option>
+      <option value="snail">Snail</option>
+    </select>
   </label>
   <input type="submit" value="Get Animal Facts!">
 </form>
