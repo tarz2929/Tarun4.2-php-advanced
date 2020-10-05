@@ -13,7 +13,12 @@ header( 'Content-type: app/JSON; charset=UTF-8' );
 // First, let's make sure there is a search term present.
 if ( isset( $_GET['search'] ) && !empty( $_GET['search'] ) )
 { // JSON object response w/the search term.
-  echo "{\"response\":\"Search term: {$_GET['search']}\"}";
+  //echo "{\"response\":\"Search term: {$_GET['search']}\"}";
+  // Retrieve the list of snacks.
+  $snacksJSONString = file_get_contents(
+    '../data/snacks.json'
+  ); // Test the output...
+  echo $snacksJSONString;
 }
 // If there is no search present, a default / fall-back response.
 else
