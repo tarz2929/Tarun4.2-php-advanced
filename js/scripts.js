@@ -19,5 +19,23 @@ snackSearchForm.addEventListener( 'submit', event => {
     .then( response => response.json() )
     .then( data => {
       console.log( data );
+      for ( let snack of data ) {
+        // Create element.
+        const snackLI = document.createElement( 'LI' );
+        // Populate the element.
+        snackLI.innerHTML = `
+          <h3>${snack[0]}</h3>
+          <dl>
+            <dt>Type</dt>
+            <dd>${snack[1]}</dd>
+            <dt>Price</dt>
+            <dd>$${parseFloat(snack[2]).toFixed(2)}</dd>
+            <dt>Calories</dt>
+            <dd>${snack[3]}</dd>
+          </dl>
+        `;
+        // Add the list item to the full list.
+        searchResultsList.append( snackLI );
+      }
     } )
 } );
