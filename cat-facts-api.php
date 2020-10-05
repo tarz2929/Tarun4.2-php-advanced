@@ -31,10 +31,34 @@ if ( $dailyCatFactResponse )
   <input type="submit" value="Get Animal Facts!">
 </form>
 <?php
-// Let's modify our request to include a QUERY PARAMETER STRING.
-$factsListResponse = file_get_contents(
-  "https://cat-fact.herokuapp.com/facts/random?amount={$_POST['amount']}&animal_type={$_POST['type']}"
-); // Test the response via var_dump()
-var_dump( $factsListResponse );
+// Check if the form was submitted.
+if ( isset( $_POST['amount'] ) && isset( $_POST['type'] ) )
+{
+  // Let's modify our request to include a QUERY PARAMETER STRING.
+  $factsListResponse = file_get_contents(
+    "https://cat-fact.herokuapp.com/facts/random?amount={$_POST['amount']}&animal_type={$_POST['type']}"
+  ); // Test the response via var_dump()
+  // var_dump( $factsListResponse );
+  // Check if there was a response.
+  if ( $factsListResponse )
+  { // Convert the JSON string to a PHP Array.
+    $factsList = json_decode( $factsListResponse );
+    ?>
+      <h2>
+        List of
+        <?php echo ucfirst( $_POST['type'] ); // Show TYPE of facts! ?>
+        Facts
+      </h2>
+      <ol>
+        <?php foreach ( $factsList as $fact ) : ?>
+          <li>
+            <?php echo $fact->text; ?>
+          </li>
+        <?php endforeach; ?>
+      </ol>
+    <?php
+  }
+}
+
 
 include './templates/footer.php';
