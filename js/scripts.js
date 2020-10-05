@@ -15,7 +15,7 @@ snackSearchForm.addEventListener( 'submit', event => {
   // Stop the form from submitting the traditional way.
   event.preventDefault();
   // Attempt a fetch for results.
-  fetch ( `http://localhost:80/api/snacks.php` )
+  fetch ( `http://localhost:80/api/snacks.php?search=${snackSearchInput.value}` )
     .then( response => response.json() )
     .then( data => {
       console.log( data );
