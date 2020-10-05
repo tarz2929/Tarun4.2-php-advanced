@@ -50,11 +50,12 @@ if ( isset( $_POST['amount'] ) && isset( $_POST['type'] ) )
     $factsList = json_decode( $factsListResponse );
     ?>
       <h2>
-        List of
         <?php echo ucfirst( $_POST['type'] ); // Show TYPE of facts! ?>
-        Facts
+        Fact(s)
       </h2>
-      <?php if ( !empty( $factsList ) ) : ?>
+      <?php if ( is_object( $factsList ) ) : ?>
+        <p><?php echo $factsList->text; ?></p>
+      <?php elseif ( !empty( $factsList ) ) : ?>
         <ol>
           <?php foreach ( $factsList as $fact ) : ?>
             <li>
