@@ -4,4 +4,5 @@
 // Grab our React "root" element.
 const reactRoot = document.getElementById( 'react-root' );
 
-
+// Render into the real DOM.
+ReactDOM.render( <p>Hello, World!</p>, reactRoot );
