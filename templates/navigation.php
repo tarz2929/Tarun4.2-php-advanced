@@ -26,5 +26,10 @@
         Snack Search (AJAX + API)
       </a>
     </li>
+    <li>
+      <a href="snack-search-react.html">
+        Snack Search (React + AJAX + API)
+      </a>
+    </li>
   </ul>
 </nav>
