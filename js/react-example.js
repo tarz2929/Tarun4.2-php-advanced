@@ -8,6 +8,8 @@ const reactRoot = document.getElementById( 'react-root' );
 const SearchForm = props => {
   // "Search" field value state.
   const [search, setSearch] = React.useState( '' );
+  // "Snacks" / search result array state.
+  const [snacks, setSnacks] = React.useState( [] );
 
   // Handle search submit.
   const submitSearch = event => {
@@ -17,8 +19,11 @@ const SearchForm = props => {
     fetch( `http://localhost:80/api/snacks.php?search=${search}` )
       .then( response => response.json() )
       .then( results => {
-        console.log( results ); // Check if results are present.
-      } )
+        // console.log( results ); // Check if results are present.
+        // Update snacks array (state) with the new results.
+        setSnacks( results );
+      } ) // Throw / show error if one occurs.
+      .catch( error => { throw error } );
   }
 
   // Render for this component.
@@ -39,7 +44,21 @@ const SearchForm = props => {
           value="Search Snacks" />
       </form>
       <h3>Snack Search Results</h3>
-      <ul></ul>
+      <ul>
+        {snacks.map( ( snack, index ) => (
+          <li key={index}>
+            <h4>{snack[0]}</h4>
+            <dl>
+              <dt>Snack Type:</dt>
+              <dd>{snack[1]}</dd>
+              <dt>Snack Price:</dt>
+              <dd>${parseFloat( snack[2] ).toFixed( 2 )}</dd>
+              <dt>Snack Calories:</dt>
+              <dd>{snack[3]}</dd>
+            </dl>
+          </li>
+        ) )}
+      </ul>
     </React.Fragment>
   );
 }
