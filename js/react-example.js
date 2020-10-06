@@ -6,6 +6,10 @@ const reactRoot = document.getElementById( 'react-root' );
 
 // Search Form component.
 const SearchForm = props => {
+  // "Search" field value state.
+  const [search, setSearch] = React.useState( '' );
+
+  // Render for this component.
   return (
     <React.Fragment>
       <h2>Snack Search Form</h2>
@@ -14,7 +18,9 @@ const SearchForm = props => {
           Enter a Search Term:
           <input
             type="search"
-            id="search" />
+            id="search"
+            onChange={event => { setSearch( event.target.value ) }}
+            value={search} />
         </label>
         <input
           type="submit"
