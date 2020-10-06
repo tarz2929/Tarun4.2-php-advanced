@@ -13,7 +13,12 @@ const SearchForm = props => {
   const submitSearch = event => {
     // Prevent the form from submitting the ol'fashioned way.
     event.preventDefault();
-    console.log( 'Submitted form!' );
+    // console.log( 'Submitted form!' ); // Check if form submit is working.
+    fetch( `http://localhost:80/api/snacks.php?search=${search}` )
+      .then( response => response.json() )
+      .then( results => {
+        console.log( results ); // Check if results are present.
+      } )
   }
 
   // Render for this component.
