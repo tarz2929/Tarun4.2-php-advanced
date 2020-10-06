@@ -7,7 +7,7 @@ const reactRoot = document.getElementById( 'react-root' );
 // Search Form component.
 const SearchForm = props => {
   return (
-    <div>
+    <React.Fragment>
       <h2>Snack Search Form</h2>
       <form>
         <label htmlFor="search">
@@ -22,7 +22,7 @@ const SearchForm = props => {
       </form>
       <h3>Snack Search Results</h3>
       <ul></ul>
-    </div>
+    </React.Fragment>
   );
 }
 
